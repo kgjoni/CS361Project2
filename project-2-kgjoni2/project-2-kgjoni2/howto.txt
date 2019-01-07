@@ -1,0 +1,48 @@
+0. This was a really easy one. You had to run it and the secret was revealed.
+1. For this one I had to:
+      * Run "ltrace ./1" a couple times to see how the output was changing.
+      * Watch the return of the rand library function call (different each
+        time a call was made)
+      * Run "ltrace -e rand ./l" and convert the returned hexadicimal value
+        to decimal.
+2. For this one I had to:
+      * Run "strace ./2" to get the system calls
+      * Run "ltrace ./2" to get library calls
+      * Watch the return value of "curl_easy_perform"
+      (Return value was "0" in both utilities, call was unsuccessful)
+3. For this one I had to:
+      PART 1:
+      * Run "ltrace ./3" to see the all the library function calls
+      * Examine the _xstat() function that was asking for a file named 
+        "iamspecial".
+      * Create a file named "iamspecial" to pass the first part
+      PART 2:
+      * Run the command "ls -l" in my current directory.
+      * Check the permission mode of the binary files.
+      * Change the permission for the "iamspecial" file so that it was
+        equal to the binary files.
+      * Run "chmod g+x iamspecial" to change the group permission.
+      * Run "chmod u+xr iamspecial" to change the user permission.
+      * Run "chmod o+x iamspecial" to change the world permission. 
+4. For this one I had to:
+      * Run the binary using the command "./4".
+      * Create a shared library file named "lib361.so".
+      * Run the command "setenv LD_LIBRARY_PATH <my_current_directory>" 
+        to set the shared library path.
+      * Creata files: "foo.h", "foo.c", "main.c"
+      * Adde a function to have the three files work together
+      * Run the following commands in order:
+        gcc -c -Wall -Werror -fpic foo.c
+        gcc -shared -o lib361.so foo.o
+        gcc -Wall -o test main.c -lfoo
+        gcc -L/home/username/foo -Wall -o test main.c -lfoo
+        (Every time I made a change to the code I recompiled using the 
+         above commands)
+      * Use "ltrace ./4" to check the name and the return value of the 
+        function.
+      * Change the name of the function to "secretoperation".
+      * Examine __assert_fail to understand the returned value.
+      * Set up an arithmetic formula in the function using three
+        int parameters.
+      * Have the function return an int result (result assigned was 10
+        for the first call and 4 for the second call).
